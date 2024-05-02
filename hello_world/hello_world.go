@@ -15,15 +15,17 @@ func Hello(name string, language string) string {
 		name = defaultName
 	}
 
-	if language == romanian {
-		return romanianHelloPrefix + name + suffix
+	prefix := englishHelloPrefix
+
+	
+	switch language {
+	case french:
+		prefix = frenchHelloPrefix
+	case romanian:
+		prefix = romanianHelloPrefix
 	}
 
-	if language == french {
-		return  frenchHelloPrefix + name + suffix
-	}
-
-	return englishHelloPrefix + name + suffix
+	return prefix + name + suffix
 }
 
 func main() {
