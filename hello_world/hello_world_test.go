@@ -6,14 +6,26 @@ func TestHello(t *testing.T) {
 	// these are subtests
 	// they are useful to group tests aroung a "thing" and describing different scenarios
 	t.Run("saying hello to people", func(t *testing.T) {
-		got := Hello("Gheorghita")
+		got := Hello("Gheorghita", "")
 		want := "Hello, Gheorghita!"
 		assertCorrectMessage(t, got, want)
 	})
 
 	t.Run("say 'Hell, World!' when an empty string is supplied", func(t *testing.T) {
-		got := Hello("")
+		got := Hello("", "")
 		want := "Hello, World!"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in Romanian", func(t *testing.T) {
+		got := Hello("Gheorghita", "Romanian")
+		want := "Salut, Gheorghita!"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in French", func(t *testing.T) {
+		got := Hello("Gheorghita", "French")
+		want := "Bonjour, Gheorghita!"
 		assertCorrectMessage(t, got, want)
 	})
 }
